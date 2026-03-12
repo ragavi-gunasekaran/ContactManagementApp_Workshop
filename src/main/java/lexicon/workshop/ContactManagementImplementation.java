@@ -81,9 +81,13 @@ public class ContactManagementImplementation {
     //To list all the contacts stored
     static void listContact(){
         System.out.println("List of Contacts : " );
-        for (String contact : contactArray) {
-            String[] contactSplit = contact.split("\\|");
-            System.out.println(contactSplit[0] + " (" + contactSplit[1] + ")");
+        if(!contactArray.isEmpty()) {
+            for (String contact : contactArray) {
+                String[] contactSplit = contact.split("\\|");
+                System.out.println(contactSplit[0] + " (" + contactSplit[1] + ")");
+            }
+        }else{
+            System.out.println("Sorry, No Contacts available in registry.");
         }
     }
 
