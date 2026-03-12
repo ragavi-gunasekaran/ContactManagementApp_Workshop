@@ -60,6 +60,10 @@ public class ContactManagementImplementation {
 
     static void listContact(){
         System.out.println("List of Contacts : " + contactArray);
+        for (String contact : contactArray) {
+            String[] contactSplit = contact.split("\\|");
+            System.out.println(contactSplit[0] + " (" + contactSplit[1] + ")");
+        }
     }
 
     static void searchContactMenu(){
