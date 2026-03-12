@@ -1,6 +1,8 @@
 package lexicon.workshop;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import static lexicon.workshop.ContactManagementImplementation.addContact;
 
 public class ContactManagementApp {
 
@@ -14,12 +16,18 @@ public class ContactManagementApp {
         int input = scan.nextInt();
         switch (input){
             case 1:
+                System.out.println("Add a New Contact");
+                addContact();
                 break;
             case 2:
+                System.out.println("Search a Contact");
+
                 break;
             case 3:
+                System.out.println("List all Contact");
                 break;
             case 0:
+                System.out.println("Exiting the Contact Management Application");
                 break;
         }
 
