@@ -25,12 +25,13 @@ public class ContactManagementApp {
                     searchContact();
                     break;
                 case 3:
-                    System.out.println("List all Contact");
                     listContact();
                     break;
                 case 0:
                     System.out.println("Exiting the Contact Management Application");
                     break;
+                default:
+                    System.out.println("Wrong option chosen. Please enter 1,2,3,0");
             }
 
             //To check if the user has to still proceed with Contact Management application or not

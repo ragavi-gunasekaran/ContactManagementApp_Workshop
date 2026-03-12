@@ -10,11 +10,13 @@ public class ContactManagementImplementation {
     static ContactsDAO contacts = new ContactsDAO();
     static ArrayList<String> contactArray = new ArrayList<>();
 
+    //Method to add a contact
     static void addContact(){
         System.out.print("Enter the name : ");
         contacts.setName(scan.next());
         System.out.print("Enter the Mobile Number : ");
         contacts.setMobileNumber(scan.nextLong());
+        //Combining the contact details using | symbol
         String newContact = contacts.getName() + "|" + contacts.getMobileNumber();
         //Check for any duplicates while adding the contact
         for (String contact : contactArray) {
@@ -27,6 +29,7 @@ public class ContactManagementImplementation {
         System.out.println("Contact Saved Successfully !!! ");
     }
 
+    //Method to search a contact
     static void searchContact(){
         searchContactMenu();
         boolean contactFound = false;
@@ -37,6 +40,7 @@ public class ContactManagementImplementation {
                 System.out.print("Enter the name to search : ");
                 String nameToSearch = scan.next();
                 for(String name : contactArray){
+                    //Splitting the contact details into two, name & mobile-number and checking each element if it matches the search criteria
                     String[] contactSplit = name.split("\\|");
                     for(String splitContact : contactSplit) {
                         if (splitContact.equalsIgnoreCase(nameToSearch)) {
@@ -53,6 +57,7 @@ public class ContactManagementImplementation {
                 System.out.print("Enter the Mobile Number : ");
                 long mobileNumber = scan.nextLong();
                 for(String name : contactArray){
+                    //Splitting the contact details into two, name & mobile-number and checking each element if it matches the search criteria
                     String[] contactSplit = name.split("\\|");
                     for(String splitContact : contactSplit) {
                         if (splitContact.equalsIgnoreCase(String.valueOf(mobileNumber))) {
@@ -61,6 +66,7 @@ public class ContactManagementImplementation {
                         }
                     }
                 }
+                //If contact is not found
                 if(!contactFound){
                     System.out.println("Contact Information not found in the registry");
                 }
@@ -72,6 +78,7 @@ public class ContactManagementImplementation {
         }
     }
 
+    //To list all the contacts stored
     static void listContact(){
         System.out.println("List of Contacts : " );
         for (String contact : contactArray) {
@@ -80,6 +87,7 @@ public class ContactManagementImplementation {
         }
     }
 
+    //menu to decide which type of search is required
     static void searchContactMenu(){
         System.out.println("1.Search By Name");
         System.out.println("2.Search By Mobile Number");
