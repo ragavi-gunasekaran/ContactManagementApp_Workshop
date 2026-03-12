@@ -1,7 +1,6 @@
 package lexicon.workshop;
 
 import java.util.Scanner;
-
 import static lexicon.workshop.ContactManagementImplementation.*;
 
 public class ContactManagementApp {
@@ -42,7 +41,6 @@ public class ContactManagementApp {
                 if (option.equalsIgnoreCase("Yes")) {
                     displayMenu();
                     input = scan.nextInt();
-                    value = true;
                     isRight = false;
                 } else if (option.equalsIgnoreCase("No")) {
                     value = false;
@@ -50,7 +48,6 @@ public class ContactManagementApp {
                     isRight = false;
                 } else {
                     IO.println("Wrong option entered. Please enter Yes or No");
-                    isRight = true;
                 }
             }
         }

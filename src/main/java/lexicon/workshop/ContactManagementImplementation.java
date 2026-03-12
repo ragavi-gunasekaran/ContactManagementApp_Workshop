@@ -8,7 +8,7 @@ public class ContactManagementImplementation {
     //Initializing Scanner to get console input
     static Scanner scan = new Scanner(System.in);
     static ContactsDAO contacts = new ContactsDAO();
-    static ArrayList<String> contactArray = new ArrayList<String>();
+    static ArrayList<String> contactArray = new ArrayList<>();
 
     static void addContact(){
         System.out.print("Enter the name : ");
@@ -16,7 +16,7 @@ public class ContactManagementImplementation {
         System.out.print("Enter the Mobile Number : ");
         contacts.setMobileNumber(scan.nextLong());
         String newContact = contacts.getName() + "|" + contacts.getMobileNumber();
-        // check duplicate
+        //Check for any duplicates while adding the contact
         for (String contact : contactArray) {
             if (contact.equalsIgnoreCase(newContact)) {
                 System.out.println("This contact is already in our registry . Cannot be added again.");
@@ -24,11 +24,12 @@ public class ContactManagementImplementation {
             }
         }
         contactArray.add(newContact);
-        System.out.println("Saving the Contact: " + contactArray);
+        System.out.println("Contact Saved Successfully !!! ");
     }
 
     static void searchContact(){
         searchContactMenu();
+        boolean contactFound = false;
         boolean choice = true;
         while (choice) {
             int input = scan.nextInt();
@@ -36,30 +37,43 @@ public class ContactManagementImplementation {
                 System.out.print("Enter the name to search : ");
                 String nameToSearch = scan.next();
                 for(String name : contactArray){
-                    if(name.equalsIgnoreCase(nameToSearch)){
-                        System.out.println("Searched Contact is : " + name);
+                    String[] contactSplit = name.split("\\|");
+                    for(String splitContact : contactSplit) {
+                        if (splitContact.equalsIgnoreCase(nameToSearch)) {
+                            System.out.println("Searched Contact is : " + name);
+                            contactFound = true;
+                        }
                     }
+                }
+                if(!contactFound){
+                    System.out.println("Contact Information not found in the registry");
                 }
                 choice = false;
             } else if (input == 2) {
                 System.out.print("Enter the Mobile Number : ");
                 long mobileNumber = scan.nextLong();
-                for(String number : contactArray){
-                    if(number.equalsIgnoreCase(String.valueOf(mobileNumber))){
-                        System.out.println("Searched Contact is : " + number);
+                for(String name : contactArray){
+                    String[] contactSplit = name.split("\\|");
+                    for(String splitContact : contactSplit) {
+                        if (splitContact.equalsIgnoreCase(String.valueOf(mobileNumber))) {
+                            System.out.println("Searched Contact is : " + name);
+                            contactFound = true;
+                        }
                     }
+                }
+                if(!contactFound){
+                    System.out.println("Contact Information not found in the registry");
                 }
                 choice = false;
             } else {
                 System.out.println("Wrong option entered. Please enter either 1 or 2");
                 searchContactMenu();
-                choice = true;
             }
         }
     }
 
     static void listContact(){
-        System.out.println("List of Contacts : " + contactArray);
+        System.out.println("List of Contacts : " );
         for (String contact : contactArray) {
             String[] contactSplit = contact.split("\\|");
             System.out.println(contactSplit[0] + " (" + contactSplit[1] + ")");

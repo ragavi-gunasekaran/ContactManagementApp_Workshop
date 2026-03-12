@@ -1,7 +1,5 @@
 package lexicon.workshop;
 
-import java.util.ArrayList;
-
 public class ContactsDAO {
 
     private String name;
