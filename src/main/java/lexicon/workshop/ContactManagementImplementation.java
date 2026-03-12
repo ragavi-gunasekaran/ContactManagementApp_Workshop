@@ -15,7 +15,7 @@ public class ContactManagementImplementation {
         contacts.setName(scan.next());
         System.out.print("Enter the Mobile Number : ");
         contacts.setMobileNumber(scan.nextLong());
-        String newContact = contacts.getName() + "|" + contacts.getName();
+        String newContact = contacts.getName() + "|" + contacts.getMobileNumber();
         // check duplicate
         for (String contact : contactArray) {
             if (contact.equalsIgnoreCase(newContact)) {
